@@ -1,0 +1,24 @@
+# OS Specific
+.DS_Store
+
+# IDE Specific
+.vscode
+
+# Project Specific
+node_modules
+*.log
+tmp
+coverage
+coverage.json
+.env
+
+dist
+build
+
+typechain
+typechain-types
+
+cache
+artifacts
+
+

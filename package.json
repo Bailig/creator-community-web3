@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "version": "1.0.0",
+  "repository": "git@github.com:Bailig/creator-community-web3.git",
+  "author": "Bailig <barrybailig@hotmail.com>",
+  "license": "MIT",
+  "scripts": {},
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.1.8"
+  }
+}
