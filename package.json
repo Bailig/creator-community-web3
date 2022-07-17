@@ -5,10 +5,7 @@
   "repository": "git@github.com:Bailig/creator-community-web3.git",
   "author": "Bailig <barrybailig@hotmail.com>",
   "license": "MIT",
-  "scripts": {
-    "test:contract": "pnpm --filter @creator-community-web3/smart-contract test",
-    "start:web": "pnpm --filter @creator-community-web3/web start"
-  },
+  "scripts": {},
   "workspaces": [
     "packages/*",
     "apps/*"
