@@ -63,11 +63,25 @@ describe("CreatorCommunity", function () {
   });
 
   describe("tipOnPost", function () {
+    it("Should transfer the tip to owner", async function () {
+      const { creatorCommunity, owner, otherAccounts } = await loadFixture(
+        deployWithPostFixture
+      );
+      const ownerBalance = await owner.getBalance();
+      const tipAmount = 1;
+      const tipper = otherAccounts[0];
+
+      await creatorCommunity.connect(tipper).tipOnPost(1, {
+        value: tipAmount,
+      });
+
+      expect(await owner.getBalance()).to.equal(ownerBalance.add(tipAmount));
+    });
+
     it("Should emit TipOnPostSuccess", async function () {
       const { creatorCommunity, owner } = await loadFixture(
         deployWithPostFixture
       );
-      // await creatorCommunity.postImage("My first post");
 
       const tipAmount = 1;
       const response = await creatorCommunity.tipOnPost(1, {
