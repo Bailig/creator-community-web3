@@ -40,7 +40,16 @@ contract CreatorCommunity {
     // ImagePostSet imageSet;
   }
 
-  event ImagePosted(
+  event PostImageSuccess(
+    uint id,
+    address owner,
+
+    string caption,
+    uint tipAmount,
+    uint likeCount
+  );
+
+  event TipOnPostSuccess(
     uint id,
     address owner,
 
@@ -60,9 +69,22 @@ contract CreatorCommunity {
     postCount++;
     posts[postCount] = Post(postCount, msg.sender, caption, 0, 0);
 
-    emit ImagePosted(postCount, msg.sender, caption, 0, 0);
+    emit PostImageSuccess(postCount, msg.sender, caption, 0, 0);
     
     return postCount;
+  }
+
+  function tipOnPost(uint id) public payable {
+    Post memory post = posts[id];
+    require(post.id != 0, "Post not found.");
+    require(msg.value != 0, "Tip amount must not be 0.");
+
+    address payable postOwner = payable(post.owner);
+    postOwner.transfer(msg.value);
+    post.tipAmount = post.tipAmount + msg.value;
+    posts[id] = post;
+
+    emit TipOnPostSuccess(id, post.owner, post.caption, post.tipAmount, post.likeCount);
   }
 
 }
