@@ -71,6 +71,7 @@ importers:
   apps/web:
     specifiers:
       '@cc/env': workspace:^1.0.0
+      '@cc/smart-contract': workspace:*
       '@types/react': ^18.0.15
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
@@ -80,6 +81,7 @@ importers:
       typescript: ^4.6.4
       vite: ^3.0.0
     dependencies:
+      '@cc/smart-contract': link:../smart-contract
       ethers: 5.6.9
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
