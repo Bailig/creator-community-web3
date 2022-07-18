@@ -18,6 +18,7 @@ importers:
 
   apps/smart-contract:
     specifiers:
+      '@cc/env': workspace:^1.0.0
       '@ethersproject/abi': ^5.6.4
       '@ethersproject/bytes': ^5.6.1
       '@ethersproject/providers': ^5.6.8
@@ -32,7 +33,6 @@ importers:
       '@types/mocha': ^9.1.1
       '@types/node': ^18.0.3
       chai: ^4.3.6
-      dotenv: ^16.0.1
       eslint: ^8.19.0
       ethers: ^5.6.9
       hardhat: ^2.10.0
@@ -43,6 +43,7 @@ importers:
       typechain: ^8.1.0
       typescript: ^4.7.4
     devDependencies:
+      '@cc/env': link:../../packages/env
       '@ethersproject/abi': 5.6.4
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/providers': 5.6.8
@@ -57,7 +58,6 @@ importers:
       '@types/mocha': 9.1.1
       '@types/node': 18.0.3
       chai: 4.3.6
-      dotenv: 16.0.1
       eslint: 8.19.0
       ethers: 5.6.9
       hardhat: 2.10.0_bn3y5sn7aa6hsplivwol7ie4em
@@ -70,6 +70,7 @@ importers:
 
   apps/web:
     specifiers:
+      '@cc/env': workspace:^1.0.0
       '@types/react': ^18.0.15
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
@@ -83,11 +84,18 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@cc/env': link:../../packages/env
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 2.0.0_vite@3.0.0
       typescript: 4.7.4
       vite: 3.0.0
+
+  packages/env:
+    specifiers:
+      dotenv: ^16.0.1
+    dependencies:
+      dotenv: 16.0.1
 
 packages:
 
@@ -2402,7 +2410,7 @@ packages:
   /dotenv/16.0.1:
     resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
     engines: {node: '>=12'}
-    dev: true
+    dev: false
 
   /duplexer3/0.1.5:
     resolution: {integrity: sha512-1A8za6ws41LQgv9HrE/66jyC5yuSjQ3L/KOpFtoBilsAK2iA2wuS5rTt1OCzIvtS2V7nVmedsUU+DGRcjBmOYA==}
