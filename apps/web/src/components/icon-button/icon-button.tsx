@@ -1,17 +1,17 @@
 import type { FC, ReactNode } from "react";
 
-export interface ButtonProps {
+export interface IconButtonProps {
   className?: string;
   children?: ReactNode;
   onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const IconButton: FC<IconButtonProps> = (props) => {
   const { className = "", children, onClick } = props;
   return (
     <button
       type="button"
-      className={`bg-gray-200 rounded-full px-4 h-10 cursor-pointer ${className}`}
+      className={`rounded-full w-10 h-10 p-2 bg-gray-200 flex justify-center items-center text-xl ${className}`}
       onClick={onClick}
     >
       {children}

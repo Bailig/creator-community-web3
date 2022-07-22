@@ -21,5 +21,49 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
+  },
+  rules: {
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "import/extensions": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "react/require-default-props": "off",
+    "react/function-component-definition": [
+      "error",
+      { namedComponents: "arrow-function" },
+    ],
+    "react/jsx-filename-extension": [1, { extensions: [".tsx", ".jsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        replacements: {
+          props: {
+            properties: false,
+          },
+        },
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ["containers/*.tsx"],
+      rules: {
+        "import/no-default-export": "off",
+        "func-names": "off",
+      },
+    },
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
+  ],
 };

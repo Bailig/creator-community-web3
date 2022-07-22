@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Dialog } from "@headlessui/react";
 import { FC, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { FaRegImages, FaTimes } from "react-icons/fa";
-import { Button } from "../Button";
-import { IconButton } from "../IconButton/IconButton";
+import { Button } from "../button";
+import { IconButton } from "../icon-button";
 
 export interface CreatePostDialogProps {
   open: boolean;
@@ -17,16 +18,15 @@ export const CreatePostDialog: FC<CreatePostDialogProps> = (props) => {
   const [caption, setCaption] = useState<string>("");
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
     const reader = new FileReader();
-    reader.onload = (e) => {
-      const fileUrl = e.target?.result as string;
+    reader.addEventListener("load", (event) => {
+      const fileUrl = event.target?.result as string;
 
       if (fileUrl) {
         setFile(fileUrl);
       }
-    };
-    reader.readAsDataURL(file);
+    });
+    reader.readAsDataURL(acceptedFiles[0]);
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -63,13 +63,13 @@ export const CreatePostDialog: FC<CreatePostDialogProps> = (props) => {
             placeholder="Write a caption."
             type="text"
             name="Caption"
-            onChange={(e) => setCaption(e.target.value)}
+            onChange={(event) => setCaption(event.target.value)}
           />
         </div>
 
         {file ? (
           <div>
-            <img src={file} alt="Uploaded image" />
+            <img src={file} alt="Uploaded" />
           </div>
         ) : (
           <div
