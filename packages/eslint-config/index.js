@@ -36,7 +36,10 @@ module.exports = {
     "react/require-default-props": "off",
     "react/function-component-definition": [
       "error",
-      { namedComponents: "arrow-function" },
+      {
+        namedComponents: "arrow-function",
+        unnamedComponents: "arrow-function",
+      },
     ],
     "react/jsx-filename-extension": [1, { extensions: [".tsx", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
@@ -47,15 +50,19 @@ module.exports = {
           props: {
             properties: false,
           },
+          env: {
+            environment: false,
+          },
         },
       },
     ],
   },
   overrides: [
     {
-      files: ["containers/*.tsx"],
+      files: ["**/containers/*.tsx"],
       rules: {
         "import/no-default-export": "off",
+        "import/prefer-default-export": "error",
         "func-names": "off",
       },
     },

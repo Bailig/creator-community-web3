@@ -1,5 +1,8 @@
 /// <reference types="vite/client" />
+import { MetaMaskInpageProvider } from "@metamask/providers";
 
-interface Window {
-  ethereum: any;
+declare global {
+  interface Window {
+    ethereum?: MetaMaskInpageProvider;
+  }
 }

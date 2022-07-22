@@ -1,5 +1,3 @@
-import { Navigation } from "./navigation";
+import Navigation from "./navigation";
 
-export default () => {
-  return <Navigation />;
-};
+export default () => <Navigation />;
